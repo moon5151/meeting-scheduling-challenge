@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>씬온보딩 · 회의 시간 기본 설정</title>
+
+<style>
+:root{
+  --ink:#111214;
+  --muted:#6d7178;
+  --line:#e5e7eb;
+  --soft:#f7f8fa;
+
+  --blue:#3182f6;
+  --blue-dark:#1b64da;
+  --blue-soft:#eef4ff;
+  --blue-mid:#79a0ff;
+  --blue-light:#c7d7ff;
+
+  --green-text:#0b6b3a;
+  --green-bg:#eafbf2;
+  --green-line:#b7e7cc;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#fff;
+  color:var(--ink);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Pretendard",
+    "Noto Sans KR",
+    system-ui,
+    sans-serif;
+  letter-spacing:-.018em;
+}
+
+button,
+a{
+  font:inherit;
+}
+
+.page{
+  width:min(1080px,calc(100% - 40px));
+  min-height:100vh;
+  margin:0 auto;
+  padding:48px 0 72px;
+}
+
+.eyebrow{
+  display:flex;
+  width:100%;
+  min-height:42px;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:22px;
+  padding:10px 18px;
+  border:1px solid var(--green-line);
+  border-radius:8px;
+  background:var(--green-bg);
+  color:var(--green-text);
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+}
+
+.onboarding{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 420px;
+  gap:72px;
+  align-items:center;
+  min-height:calc(100vh - 184px);
+  padding:30px 24px 56px;
+}
+
+.copy{
+  max-width:570px;
+}
+
+.step-label{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  margin-bottom:20px;
+  padding:6px 11px;
+  border-radius:999px;
+  background:var(--blue-soft);
+  color:#2164d9;
+  font-size:13px;
+  font-weight:750;
+}
+
+h1{
+  margin:0;
+  font-size:44px;
+  line-height:1.18;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+
+.description{
+  margin:24px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+  word-break:keep-all;
+}
+
+.description + .description{
+  margin-top:16px;
+}
+
+.description strong{
+  color:#333941;
+  font-weight:700;
+}
+
+.primary{
+  display:flex;
+  width:100%;
+  min-height:56px;
+  align-items:center;
+  justify-content:center;
+  margin-top:40px;
+  border-radius:14px;
+  background:var(--blue);
+  color:#fff;
+  font-size:16px;
+  font-weight:750;
+  text-decoration:none;
+  transition:
+    background .18s ease,
+    transform .18s ease;
+}
+
+.primary:hover{
+  background:var(--blue-dark);
+  transform:translateY(-1px);
+}
+
+.preview{
+  position:relative;
+  padding:26px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 16px 42px rgba(18,24,40,.09);
+}
+
+.preview-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:22px;
+  color:#4f5965;
+  font-size:13px;
+  font-weight:700;
+}
+
+.preview-badge::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--blue);
+}
+
+.week{
+  display:grid;
+  grid-template-columns:48px repeat(5,1fr);
+  gap:6px;
+}
+
+.corner{
+  height:34px;
+}
+
+.day{
+  display:grid;
+  place-items:center;
+  height:34px;
+  color:#626973;
+  font-size:12px;
+  font-weight:750;
+}
+
+.time{
+  display:flex;
+  align-items:center;
+  height:34px;
+  color:#8a9099;
+  font-size:11px;
+}
+
+.cell{
+  height:34px;
+  border-radius:7px;
+  background:#f4f5f7;
+}
+
+.cell.good{
+  background:var(--blue);
+}
+
+.cell.possible{
+  background:var(--blue-mid);
+}
+
+.cell.avoid{
+  background:var(--blue-light);
+}
+
+.legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#747b85;
+  font-size:12px;
+  font-weight:650;
+}
+
+.legend-color{
+  width:10px;
+  height:10px;
+  border-radius:3px;
+}
+
+.legend-color.good{
+  background:var(--blue);
+}
+
+.legend-color.possible{
+  background:var(--blue-mid);
+}
+
+.legend-color.avoid{
+  background:var(--blue-light);
+}
+
+.helper{
+  margin:20px 0 0;
+  color:#8b95a1;
+  font-size:13px;
+  line-height:1.5;
+  text-align:center;
+}
+
+@media(max-width:820px){
+  .page{
+    width:min(100% - 24px,720px);
+    padding-top:34px;
+  }
+
+  .onboarding{
+    grid-template-columns:1fr;
+    gap:44px;
+    min-height:auto;
+    padding:28px 4px 48px;
+  }
+
+  .copy{
+    max-width:none;
+  }
+
+  h1{
+    font-size:34px;
+  }
+
+  .description{
+    font-size:16px;
+  }
+
+  .preview{
+    width:100%;
+    max-width:480px;
+    margin:0 auto;
+    padding:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <div class="eyebrow">
+    회의 참여자 공통 화면
+  </div>
+
+  <section class="onboarding">
+
+    <div class="copy">
+
+      <div class="step-label">
+        첫 번째 기본 설정
+      </div>
+
+      <h1>
+        회의 시간을 더 쉽게 결정할 수 있도록 도와드릴게요.
+      </h1>
+
+      <p class="description">
+        회의하기 좋은 시간과 피하고 싶은 시간을 한 번 설정해두면,
+        이후 회의를 조율할 때 자동으로 반영돼요.
+      </p>
+
+      <p class="description">
+        평소 출퇴근 시간과 점심시간 패턴을 반영해
+        <strong>기본 설정을 준비했어요.</strong><br>
+        필요한 경우 언제든 수정할 수 있어요.
+      </p>
+
+      <a
+        class="primary"
+        href="scene0.html"
+      >
+        설정 시작하기
+      </a>
+
+    </div>
+
+    <div class="preview" aria-hidden="true">
+
+      <div class="preview-badge">
+        일주일의 근무 시간
+      </div>
+
+      <div class="week">
+
+        <div class="corner"></div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+
+        <div class="time">09:00</div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell avoid"></div>
+
+        <div class="time">10:00</div>
+        <div class="cell good"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+
+        <div class="time">11:00</div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell possible"></div>
+
+        <div class="time">12:00</div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+
+        <div class="time">13:00</div>
+        <div class="cell avoid"></div>
+        <div class="cell possible"></div>
+        <div class="cell avoid"></div>
+        <div class="cell possible"></div>
+        <div class="cell avoid"></div>
+
+        <div class="time">14:00</div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+
+        <div class="time">15:00</div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+
+        <div class="time">16:00</div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell possible"></div>
+        <div class="cell good"></div>
+        <div class="cell avoid"></div>
+
+      </div>
+
+      <div class="legend">
+
+        <div class="legend-item">
+          <span class="legend-color good"></span>
+          좋아요
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color possible"></span>
+          가능해요
+        </div>
+
+        <div class="legend-item">
+          <span class="legend-color avoid"></span>
+          피하고 싶지만 가능해요
+        </div>
+
+      </div>
+
+      <p class="helper">
+        기본으로 설정된 시간을 다음 화면에서 확인하고 수정할 수 있어요.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+</body>
+</html>
