@@ -191,16 +191,16 @@ h1{
   position:absolute;
   bottom:10px;
   height:26px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   border-radius:7px;
-  background:var(--blue);
+  background-color:var(--blue);
+  background-image:repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,.14) 0,
+    rgba(255,255,255,.14) 1px,
+    transparent 1px,
+    transparent 7px
+  );
   box-shadow:0 4px 12px rgba(47,109,246,.22);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  white-space:nowrap;
 }
 
 .proposed.aligned{
@@ -408,12 +408,11 @@ h1{
               점심
             </div>
 
-            <div
-              class="proposed aligned"
-              style="left:62.5%;width:12.5%;"
-            >
-              후보 시간
-            </div>
+           <div
+  class="proposed aligned"
+  style="left:62.5%;width:12.5%;"
+  aria-label="회의 후보 시간"
+></div>
           </div>
 
         </div>
@@ -500,12 +499,11 @@ h1{
               점심
             </div>
 
-            <div
-              class="proposed aligned"
-              style="left:25%;width:12.5%;"
-            >
-              후보 시간
-            </div>
+           <div
+  class="proposed aligned"
+  style="left:25%;width:12.5%;"
+  aria-label="회의 후보 시간"
+></div>
           </div>
 
         </div>
@@ -588,9 +586,8 @@ h1{
 <div
   class="proposed"
   style="left:87.5%;width:12.5%;bottom:10px;"
->
-  후보 시간
-</div>
+  aria-label="회의 후보 시간"
+></div>
           </div>
 
         </div>
