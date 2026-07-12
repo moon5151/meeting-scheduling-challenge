@@ -218,15 +218,15 @@ h1{
   top:50%;
   transform:translateY(-50%);
   height:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   border-radius:7px;
-  background:var(--good);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  white-space:nowrap;
+  background-color:var(--good);
+  background-image:repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,.14) 0,
+    rgba(255,255,255,.14) 1px,
+    transparent 1px,
+    transparent 7px
+  );
 }
 
 .schedule-body{
@@ -562,11 +562,10 @@ h1{
             </div>
 
             <div
-              class="proposed"
-              style="left:62.5%;width:12.5%;"
-            >
-              후보 시간
-            </div>
+  class="proposed"
+  style="left:62.5%;width:12.5%;"
+  aria-label="회의 후보 시간"
+></div>
           </div>
         </div>
       </div>
@@ -720,11 +719,10 @@ h1{
             </div>
 
             <div
-              class="proposed"
-              style="left:25%;width:12.5%;"
-            >
-              후보 시간
-            </div>
+  class="proposed"
+  style="left:25%;width:12.5%;"
+  aria-label="회의 후보 시간"
+></div>
           </div>
         </div>
       </div>
@@ -871,11 +869,10 @@ h1{
             </div>
 
             <div
-              class="proposed"
-              style="left:87.5%;width:12.5%;"
-            >
-              후보 시간
-            </div>
+  class="proposed"
+  style="left:87.5%;width:12.5%;"
+  aria-label="회의 후보 시간"
+></div>
           </div>
         </div>
       </div>
@@ -1060,12 +1057,12 @@ function updateActionArea() {
   }
 
   sendButton.textContent =
-    `후보 ${includedCount}개를 참여자에게 전달하기`;
+    `참여자에게 응답 요청하기`;
 
   sendButton.classList.remove("recalculate");
 
   actionNote.textContent =
-    "선택한 후보를 6명의 참여자에게 전달해요.";
+    "선택한 후보를 모든 참여자에게 전달해요.";
 }
 
 sendButton.addEventListener("click", () => {
