@@ -143,6 +143,92 @@ h1{
   letter-spacing:-.03em;
 }
 
+.timeline-wrap{
+  padding:24px 24px 0;
+}
+
+.timeline-head{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  align-items:end;
+  margin-bottom:10px;
+}
+
+.timeline-head span:first-child{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.hours{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#8a8f98;
+  font-size:11px;
+}
+
+.timeline{
+  display:grid;
+  grid-template-columns:92px 1fr;
+  align-items:stretch;
+}
+
+.timeline-label{
+  display:flex;
+  align-items:center;
+  padding-right:14px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.timeline-track{
+  position:relative;
+  min-height:70px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(12.5% - 1px),
+      #eef0f3 calc(12.5% - 1px),
+      #eef0f3 12.5%
+    ),
+    #fbfbfc;
+}
+
+.busy{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:6px;
+  background:#dfe3e8;
+  color:#535964;
+  font-size:11px;
+  white-space:nowrap;
+}
+
+.proposed{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:7px;
+  background:var(--good);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
 .schedule-body{
   padding:26px 24px 28px;
 }
@@ -440,6 +526,51 @@ h1{
         </div>
       </header>
 
+      <div class="timeline-wrap">
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-label">7월 14일</div>
+
+          <div class="timeline-track">
+            <div
+              class="busy"
+              style="left:0%;width:25%;"
+            >
+              팀 주간회의
+            </div>
+
+            <div
+              class="busy"
+              style="left:50%;width:12.5%;"
+            >
+              점심
+            </div>
+
+            <div
+              class="proposed"
+              style="left:62.5%;width:12.5%;"
+            >
+              후보 시간
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="schedule-body">
 
         <section class="response-section">
@@ -553,6 +684,51 @@ h1{
         </div>
       </header>
 
+      <div class="timeline-wrap">
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-label">7월 15일</div>
+
+          <div class="timeline-track">
+            <div
+              class="busy"
+              style="left:0%;width:25%;"
+            >
+              외근
+            </div>
+
+            <div
+              class="busy"
+              style="left:37.5%;width:12.5%;"
+            >
+              점심
+            </div>
+
+            <div
+              class="proposed"
+              style="left:25%;width:12.5%;"
+            >
+              후보 시간
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="schedule-body">
 
         <section class="response-section">
@@ -665,6 +841,44 @@ h1{
           <div class="when">7월 16일 목요일 · 16:00 ~ 17:00</div>
         </div>
       </header>
+
+      <div class="timeline-wrap">
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-label">7월 16일</div>
+
+          <div class="timeline-track">
+            <div
+              class="busy"
+              style="left:75%;width:12.5%;"
+            >
+              내부 리뷰
+            </div>
+
+            <div
+              class="proposed"
+              style="left:87.5%;width:12.5%;"
+            >
+              후보 시간
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="schedule-body">
 
