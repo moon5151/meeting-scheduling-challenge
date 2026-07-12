@@ -133,7 +133,6 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
   border-radius:8px;
   position:relative
 }
-.pref.good{background:#8fb6ff}
 .pref.possible{background:#c5d8ff}
 .pref.avoid{background:#eceef1}
 .dot-count{
@@ -159,7 +158,6 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
 }
 .legend-item{display:flex;align-items:center;gap:8px}
 .swatch{width:16px;height:10px;border-radius:4px}
-.swatch.good{background:#8fb6ff}
 .swatch.possible{background:#c5d8ff}
 .swatch.avoid{background:#eceef1;border:1px solid #d9dce1}
 .swatch.busy{background:var(--busy)}
@@ -234,11 +232,9 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
 .start-button{background:#3182F6}
 
 /* 디테일 수정: 타임 가드 색상 및 캘린더 헤더 여백 */
-.pref.good{background:#73A7F7}
-.pref.possible{background:#D7E9FF}
+.pref.possible{background:#73A7F7}
 .dot-count{background:#4C91F2}
-.swatch.good{background:#73A7F7}
-.swatch.possible{background:#D7E9FF}
+.swatch.possible{background:#73A7F7}
 
 .calendar{
   border:0;
@@ -319,24 +315,24 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
 
       <div class="day-col" data-day="mon">
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
       </div>
 
       <div class="day-col" data-day="tue">
-        <div class="slot"><div class="pref good"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref avoid"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
       </div>
@@ -344,34 +340,34 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
       <div class="day-col" data-day="wed">
         <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
       </div>
 
       <div class="day-col" data-day="thu">
-        <div class="slot"><div class="pref good"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
-        <div class="slot"><div class="pref good"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
+        <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
       </div>
 
       <div class="day-col" data-day="fri">
         <div class="slot"><div class="pref possible"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
         <div class="slot"><div class="pref possible"><span class="dot-count"></span></div></div>
-        <div class="slot"><div class="pref good"></div></div>
+        <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref possible"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
         <div class="slot"><div class="pref avoid"></div></div>
@@ -380,7 +376,6 @@ h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
   </section>
 
   <div class="legend">
-    <div class="legend-item"><span class="swatch good"></span>좋아요</div>
     <div class="legend-item"><span class="swatch possible"></span>가능해요</div>
     <div class="legend-item"><span class="swatch avoid"></span>피하고 싶지만 가능해요</div>
     <div class="legend-item schedule-only" style="display:none"><span class="swatch busy"></span>불가능해요</div>
