@@ -231,7 +231,7 @@ h1{
 
 .choice-set{
   display:grid;
-  grid-template-columns:1fr 1fr 1.7fr 1fr;
+  grid-template-columns:1fr 1.7fr 1fr;
   gap:10px;
 }
 
@@ -251,16 +251,11 @@ h1{
   background:#fafcff;
 }
 
-.choice.selected.good{
+
+.choice.selected.possible{
   border-color:var(--blue);
   background:var(--blue);
   color:#fff;
-}
-
-.choice.selected.possible{
-  border-color:#7ea3ff;
-  background:#eaf1ff;
-  color:#2957b5;
 }
 
 .choice.selected.avoid{
@@ -274,7 +269,7 @@ h1{
   margin-left:10px;
   border-color:#cfd2d8;
   background:#f7f8fa;
-  color:#9AA1AB;
+  color:#303640;
 }
 
 .choice.impossible::before{
@@ -332,7 +327,7 @@ h1{
   }
 
   .choice-set{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
   }
 
   .choice.impossible{
@@ -430,9 +425,6 @@ h1{
         </p>
 
         <div class="choice-set">
-          <button class="choice good" type="button">
-            좋아요
-          </button>
 
           <button class="choice possible" type="button">
             가능해요
@@ -521,9 +513,6 @@ h1{
         </p>
 
         <div class="choice-set">
-          <button class="choice good" type="button">
-            좋아요
-          </button>
 
           <button class="choice possible" type="button">
             가능해요
@@ -605,9 +594,6 @@ h1{
         </p>
 
         <div class="choice-set">
-          <button class="choice good" type="button">
-            좋아요
-          </button>
 
           <button class="choice possible" type="button">
             가능해요
