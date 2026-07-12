@@ -18,8 +18,6 @@
 
   --possible:#73a7f7;
   --avoid:#d7e9ff;
-  --impossible:#eceef1;
-  --impossible-line:#d9dce1;
 
   --green-text:#0b6b3a;
   --green-bg:#eafbf2;
@@ -202,11 +200,6 @@ h1{
   background:var(--avoid);
 }
 
-.cell.impossible{
-  border:1px solid var(--impossible-line);
-  background:var(--impossible);
-}
-
 .legend{
   display:flex;
   flex-wrap:wrap;
@@ -237,11 +230,6 @@ h1{
 
 .legend-color.avoid{
   background:var(--avoid);
-}
-
-.legend-color.impossible{
-  border:1px solid var(--impossible-line);
-  background:var(--impossible);
 }
 
 .helper{
@@ -359,21 +347,21 @@ h1{
         <div class="cell possible"></div>
 
         <div class="time">12:00</div>
-        <div class="cell impossible"></div>
-        <div class="cell impossible"></div>
-        <div class="cell impossible"></div>
-        <div class="cell impossible"></div>
-        <div class="cell impossible"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
+        <div class="cell avoid"></div>
 
         <div class="time">13:00</div>
         <div class="cell avoid"></div>
+        <div class="cell possible"></div>
         <div class="cell avoid"></div>
-        <div class="cell avoid"></div>
-        <div class="cell avoid"></div>
+        <div class="cell possible"></div>
         <div class="cell avoid"></div>
 
         <div class="time">14:00</div>
-        <div class="cell avoid"></div>
+        <div class="cell possible"></div>
         <div class="cell possible"></div>
         <div class="cell avoid"></div>
         <div class="cell possible"></div>
@@ -405,11 +393,6 @@ h1{
         <div class="legend-item">
           <span class="legend-color avoid"></span>
           피하고 싶지만 가능해요
-        </div>
-
-        <div class="legend-item">
-          <span class="legend-color impossible"></span>
-          불가능해요
         </div>
 
       </div>
