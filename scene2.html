@@ -154,12 +154,12 @@ h1{
 }
 
 .response-title{
-  margin:0 0 14px;
+  margin:0 0 6px;
   font-size:16px;
 }
 
 .response-description{
-  margin:-6px 0 18px;
+  margin:0 0 18px;
   color:var(--muted);
   font-size:14px;
   line-height:1.5;
@@ -167,7 +167,7 @@ h1{
 
 .response-options{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:1fr 1fr 1.7fr 1fr;
   gap:10px;
 }
 
@@ -204,16 +204,21 @@ h1{
   border-color:#d7deef;
 }
 
-.impossible-area{
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px solid var(--line);
-}
-
 .response-option.impossible{
-  width:100%;
+  position:relative;
+  margin-left:10px;
   color:var(--impossible);
   background:#fff;
+}
+
+.response-option.impossible::before{
+  content:"";
+  position:absolute;
+  left:-11px;
+  top:2px;
+  bottom:2px;
+  width:1px;
+  background:#d9dce1;
 }
 
 .response-option.impossible.selected{
@@ -399,7 +404,15 @@ h1{
   }
 
   .response-options{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .response-option.impossible{
+    margin-left:0;
+  }
+
+  .response-option.impossible::before{
+    display:none;
   }
 }
 </style>
@@ -431,6 +444,7 @@ h1{
 
         <section class="response-section">
           <h3 class="response-title">이 시간은 어떠신가요?</h3>
+
           <p class="response-description">
             캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
           </p>
@@ -459,9 +473,7 @@ h1{
             >
               가능하지만 피하고 싶어요
             </button>
-          </div>
 
-          <div class="impossible-area">
             <button
               type="button"
               class="response-option impossible"
@@ -545,6 +557,7 @@ h1{
 
         <section class="response-section">
           <h3 class="response-title">이 시간은 어떠신가요?</h3>
+
           <p class="response-description">
             캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
           </p>
@@ -573,9 +586,7 @@ h1{
             >
               가능하지만 피하고 싶어요
             </button>
-          </div>
 
-          <div class="impossible-area">
             <button
               type="button"
               class="response-option impossible"
@@ -659,6 +670,7 @@ h1{
 
         <section class="response-section">
           <h3 class="response-title">이 시간은 어떠신가요?</h3>
+
           <p class="response-description">
             캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
           </p>
@@ -687,9 +699,7 @@ h1{
             >
               가능하지만 피하고 싶어요
             </button>
-          </div>
 
-          <div class="impossible-area">
             <button
               type="button"
               class="response-option impossible"
@@ -842,7 +852,7 @@ function updateActionArea() {
   sendButton.classList.remove("recalculate");
 
   actionNote.textContent =
-    `선택한 후보를 6명의 참여자에게 전달해요.`;
+    "선택한 후보를 6명의 참여자에게 전달해요.";
 }
 
 sendButton.addEventListener("click", () => {
