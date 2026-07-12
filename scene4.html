@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Scene 4 · 결과 리포트</title>
+
 <style>
 :root{
   --ink:#111214;
@@ -16,7 +17,11 @@
   --possible:#8fb0ff;
   --avoid:#d7e2ff;
 }
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
   background:#fff;
@@ -24,264 +29,17 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",system-ui,sans-serif;
   letter-spacing:-.018em;
 }
-button{font:inherit}
+
+button{
+  font:inherit;
+}
+
 .page{
   width:min(1060px,calc(100% - 40px));
   margin:0 auto;
   padding:52px 0 88px;
 }
-.eyebrow{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:12px;
-}
-h1{
-  margin:0;
-  font-size:40px;
-  line-height:1.1;
-  letter-spacing:-.04em;
-}
-.subtitle{
-  margin-top:12px;
-  margin-bottom:46px;
-  color:var(--muted);
-  font-size:18px;
-}
-.schedule-button{
-  width:100%;
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--ink);
-  text-align:left;
-  cursor:pointer;
-  transition:.18s ease;
-}
-.schedule-button:hover{
-  border-color:#c8d3ec;
-  transform:translateY(-1px);
-}
-.schedule-button.selected{
-  border-color:var(--blue-line);
-  box-shadow:0 0 0 1px var(--blue-line);
-  background:var(--blue-soft);
-  position:relative;
-}
-.schedule-button.selected::before{
-  content:"";
-  position:absolute;
-  left:-1px;
-  top:-1px;
-  bottom:-1px;
-  width:5px;
-  background:var(--blue);
-}
-.primary-report{
-  padding:34px;
-  border-radius:20px;
-  background:linear-gradient(180deg,#f7faff 0,#fff 100%);
-  box-shadow:0 14px 32px rgba(47,109,246,.08);
-}
-.primary-report.selected::before{border-radius:20px 0 0 20px}
-.primary-top{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:40px;
-  align-items:start;
-}
-.rank-pill{
-  display:inline-flex;
-  padding:6px 10px;
-  border-radius:999px;
-  background:#e8f0ff;
-  color:#2159ce;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:14px;
-}
-.date{
-  font-size:28px;
-  font-weight:730;
-}
-.time{
-  margin-top:5px;
-  font-size:46px;
-  font-weight:790;
-  letter-spacing:-.045em;
-}
-.score{
-  text-align:right;
-  color:var(--blue);
-  font-size:64px;
-  font-weight:800;
-  line-height:1;
-  white-space:nowrap;
-}
-.reason-block{
-  margin-top:30px;
-  padding-top:24px;
-  border-top:1px solid #d5e2ff;
-}
-.reason-block h2{
-  margin:0 0 16px;
-  font-size:17px;
-}
-.reason-list{
-  display:grid;
-}
-.reason{
-  display:grid;
-  grid-template-columns:10px 1fr;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid var(--line);
-  font-size:15px;
-  line-height:1.55;
-}
-.reason:last-child{border-bottom:0}
-.reason-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--blue);
-  margin-top:7px;
-}
-.alternatives{
-  display:grid;
-  gap:16px;
-  margin-top:20px;
-}
-.alt{
-  display:grid;
-  grid-template-columns:92px 170px 1fr 250px;
-  gap:24px;
-  align-items:center;
-  padding:22px 24px;
-  border-radius:16px;
-}
-.alt-rank{
-  font-size:14px;
-  font-weight:800;
-  color:#4b5563;
-}
-.alt-main .alt-score{
-  font-size:30px;
-  font-weight:800;
-  color:#2b2f36;
-}
-.alt-main .alt-when{
-  margin-top:7px;
-  font-size:15px;
-  font-weight:700;
-  line-height:1.45;
-}
-.section-title{
-  margin:0 0 10px;
-  font-size:13px;
-  color:var(--muted);
-}
-.opinion-list{
-  display:grid;
-  gap:10px;
-}
-.opinion-row{
-  display:grid;
-  grid-template-columns:150px 1fr 28px;
-  gap:10px;
-  align-items:center;
-  font-size:13px;
-}
-.track{
-  height:8px;
-  background:#edf2ff;
-  border-radius:999px;
-  overflow:hidden;
-}
-.fill{
-  height:100%;
-  border-radius:999px;
-}
-.good{background:var(--blue)}
-.possible{background:var(--possible)}
-.avoid{background:var(--avoid)}
-.detail-list{
-  display:grid;
-}
-.detail-row{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  padding:7px 0;
-  font-size:13px;
-}
-.detail-row span{color:var(--muted)}
-.action-area{
-  width:min(560px,100%);
-  margin:44px auto 0;
-  padding:24px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  box-shadow:0 10px 28px rgba(18,24,40,.08);
-  background:#fff;
-}
-.primary-action{
-  width:100%;
-  min-height:54px;
-  border:0;
-  border-radius:14px;
-  background:#111;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-}
-.action-note{
-  margin-top:11px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-  text-align:center;
-}
-@media(max-width:860px){
-  .page{width:min(100% - 24px,720px)}
-  .primary-top{grid-template-columns:1fr}
-  .score{text-align:left}
-  .alt{grid-template-columns:1fr}
-}
 
-/* 과제 화면 구분 배지 */
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  width:max-content;
-  padding:7px 11px;
-  border-radius:8px;
-  font-weight:800;
-  letter-spacing:-.01em;
-}
-.eyebrow.organizer{
-  color:#245bcf;
-  background:#eef4ff;
-  border:1px solid #cfdcff;
-}
-.eyebrow.participant{
-  color:#7047c7;
-  background:#f4efff;
-  border:1px solid #dfd1ff;
-}
-.eyebrow.common{
-  color:#505762;
-  background:#f3f4f6;
-  border:1px solid #e0e2e6;
-}
-
-
-/* 대안 카드 내 선택/상세 정보 제목 상단 정렬 */
-.alt > div:nth-child(3),
-.alt > div:nth-child(4){
-  align-self:start;
-}
-
-
-/* 프로토타입 화면 구분 헤더 */
 .eyebrow{
   display:flex;
   width:100%;
@@ -291,119 +49,703 @@ h1{
   text-align:center;
   padding:10px 18px;
   margin-bottom:22px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:-.01em;
 }
 
-/* 요청된 색상 변경 */
-.eyebrow.organizer{color:#0B6B3A;background:#EAFBF2;border-color:#B7E7CC}
-.primary-action{background:#3182F6}
+.eyebrow.organizer{
+  color:#0B6B3A;
+  background:#EAFBF2;
+  border:1px solid #B7E7CC;
+}
+
+h1{
+  margin:0;
+  font-size:40px;
+  line-height:1.1;
+  letter-spacing:-.04em;
+}
+
+.subtitle{
+  margin-top:12px;
+  margin-bottom:46px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.schedule-button{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  text-align:left;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+.schedule-button:hover{
+  border-color:#c8d3ec;
+  transform:translateY(-1px);
+}
+
+.schedule-button.selected{
+  position:relative;
+  border-color:var(--blue-line);
+  background:var(--blue-soft);
+  box-shadow:0 0 0 1px var(--blue-line);
+}
+
+.schedule-button.selected::before{
+  content:"";
+  position:absolute;
+  left:-1px;
+  top:-1px;
+  bottom:-1px;
+  width:5px;
+  background:var(--blue);
+}
+
+.primary-report{
+  padding:34px;
+  border-radius:20px;
+  background:linear-gradient(180deg,#f7faff 0,#fff 100%);
+  box-shadow:0 14px 32px rgba(47,109,246,.08);
+}
+
+.primary-report.selected::before{
+  border-radius:20px 0 0 20px;
+}
+
+.primary-top{
+  display:block;
+}
+
+.rank-pill{
+  display:inline-flex;
+  padding:8px 13px;
+  margin-bottom:16px;
+  border-radius:999px;
+  background:#e8f0ff;
+  color:#2159ce;
+  font-size:14px;
+  font-weight:800;
+}
+
+.fitness{
+  margin-bottom:14px;
+  color:var(--blue);
+  font-size:30px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.date{
+  font-size:30px;
+  font-weight:730;
+}
+
+.time{
+  margin-top:5px;
+  font-size:46px;
+  font-weight:790;
+  letter-spacing:-.045em;
+}
+
+.reason-block{
+  margin-top:30px;
+  padding-top:24px;
+  border-top:1px solid #d5e2ff;
+}
+
+.reason-block h2{
+  margin:0 0 16px;
+  font-size:17px;
+}
+
+.reason-list{
+  display:grid;
+}
+
+.reason{
+  display:grid;
+  grid-template-columns:10px 1fr;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-size:15px;
+  line-height:1.55;
+}
+
+.reason:last-child{
+  border-bottom:0;
+}
+
+.reason-dot{
+  width:8px;
+  height:8px;
+  margin-top:7px;
+  border-radius:50%;
+  background:var(--blue);
+}
+
+.primary-info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:36px;
+  margin-top:26px;
+  padding-top:24px;
+  border-top:1px solid #d5e2ff;
+}
+
+.primary-info-grid > div{
+  align-self:start;
+}
+
+.primary-info-grid > div:last-child{
+  padding-left:28px;
+  border-left:1px solid var(--line);
+}
+
+.alternatives{
+  display:grid;
+  gap:16px;
+  margin-top:20px;
+}
+
+.alt{
+  display:grid;
+  grid-template-columns:92px 190px 1fr 250px;
+  gap:24px;
+  align-items:center;
+  padding:22px 24px;
+  border-radius:16px;
+}
+
+.alt-rank{
+  color:#4b5563;
+  font-size:14px;
+  font-weight:800;
+}
+
+.alt-fitness{
+  color:#2b2f36;
+  font-size:24px;
+  font-weight:800;
+}
+
+.alt-when{
+  margin-top:9px;
+  font-size:15px;
+  font-weight:700;
+  line-height:1.45;
+}
+
+.section-title{
+  margin:0 0 10px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.opinion-list{
+  display:grid;
+  gap:10px;
+}
+
+.opinion-row{
+  display:grid;
+  grid-template-columns:150px 1fr 28px;
+  gap:10px;
+  align-items:center;
+  font-size:13px;
+}
+
+.track{
+  height:8px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#edf2ff;
+}
+
+.fill{
+  height:100%;
+  border-radius:999px;
+}
+
+.good{
+  background:var(--blue);
+}
+
+.possible{
+  background:var(--possible);
+}
+
+.avoid{
+  background:var(--avoid);
+}
+
+.detail-list{
+  display:grid;
+}
+
+.detail-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:7px 0;
+  font-size:13px;
+}
+
+.detail-row span{
+  color:var(--muted);
+}
+
+.alt > div:nth-child(3),
+.alt > div:nth-child(4){
+  align-self:start;
+}
+
+.action-area{
+  width:min(560px,100%);
+  margin:44px auto 0;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(18,24,40,.08);
+}
+
+.primary-action{
+  width:100%;
+  min-height:54px;
+  border:0;
+  border-radius:14px;
+  background:#3182F6;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.action-note{
+  margin-top:11px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+  text-align:center;
+}
+
+@media(max-width:860px){
+  .page{
+    width:min(100% - 24px,720px);
+  }
+
+  .primary-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .primary-info-grid > div:last-child{
+    padding:24px 0 0;
+    border-top:1px solid var(--line);
+    border-left:0;
+  }
+
+  .alt{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 </head>
+
 <body>
 <main class="page">
-  <div class="eyebrow organizer">회의 주최자 화면</div>
-  <h1>결과 리포트</h1>
-  <div class="subtitle">모두가 모일 수 있는 시간을 찾았어요.</div>
 
-  <button class="schedule-button primary-report selected" data-schedule="1" type="button">
+  <div class="eyebrow organizer">회의 주최자 화면</div>
+
+  <h1>결과 리포트</h1>
+
+  <div class="subtitle">
+    모두가 모일 수 있는 시간을 찾았어요.
+  </div>
+
+  <button
+    class="schedule-button primary-report selected"
+    data-schedule="1"
+    type="button"
+  >
     <div class="primary-top">
-      <div>
-        <div class="rank-pill">1순위</div>
-        <div class="date">7월 14일 화요일</div>
-        <div class="time">14:00 ~ 15:00</div>
+
+      <div class="rank-pill">
+        1순위
       </div>
-      <div class="score">92점</div>
+
+      <div class="fitness">
+        적합도 92%
+      </div>
+
+      <div class="date">
+        7월 14일 화요일
+      </div>
+
+      <div class="time">
+        14:00 ~ 15:00
+      </div>
+
     </div>
 
     <div class="reason-block">
+
       <h2>이 일정을 제안하는 이유</h2>
+
       <div class="reason-list">
-        <div class="reason"><span class="reason-dot"></span><span>필수 참여자 2명 모두 참석할 수 있어요.</span></div>
-        <div class="reason"><span class="reason-dot"></span><span>참여자 5명이 ‘좋아요’로 답해 가장 높은 선호도를 보여요.</span></div>
-        <div class="reason"><span class="reason-dot"></span><span>회의 전후 60분의 여유가 있어 연속 회의 부담이 적어요.</span></div>
+
+        <div class="reason">
+          <span class="reason-dot"></span>
+          <span>필수 참여자 2명 모두 참석할 수 있어요.</span>
+        </div>
+
+        <div class="reason">
+          <span class="reason-dot"></span>
+          <span>참여자 5명이 ‘좋아요’로 답해 가장 높은 선호도를 보여요.</span>
+        </div>
+
+        <div class="reason">
+          <span class="reason-dot"></span>
+          <span>회의 전후 60분의 여유가 있어 연속 회의 부담이 적어요.</span>
+        </div>
+
       </div>
+    </div>
+
+    <div class="primary-info-grid">
+
+      <div>
+        <div class="section-title">참여자 선택</div>
+
+        <div class="opinion-list">
+
+          <div class="opinion-row">
+            <span>좋아요</span>
+
+            <div class="track">
+              <div
+                class="fill good"
+                style="width:83.33%"
+              ></div>
+            </div>
+
+            <strong>5</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill possible"
+                style="width:16.67%"
+              ></div>
+            </div>
+
+            <strong>1</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능하지만 피하고 싶어요</span>
+
+            <div class="track">
+              <div
+                class="fill avoid"
+                style="width:0%"
+              ></div>
+            </div>
+
+            <strong>0</strong>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">상세 정보</div>
+
+        <div class="detail-list">
+
+          <div class="detail-row">
+            <span>필수 참여자</span>
+            <strong>2 / 2</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>선택 참여자</span>
+            <strong>4 / 4</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>회의 전후 여유</span>
+            <strong>60분</strong>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </button>
 
   <section class="alternatives">
-    <button class="schedule-button alt" data-schedule="2" type="button">
-      <div class="alt-rank">2순위</div>
+
+    <button
+      class="schedule-button alt"
+      data-schedule="2"
+      type="button"
+    >
+      <div class="alt-rank">
+        2순위
+      </div>
 
       <div class="alt-main">
-        <div class="alt-score">84점</div>
-        <div class="alt-when">7월 15일 수요일<br>11:00 ~ 12:00</div>
+
+        <div class="alt-fitness">
+          적합도 84%
+        </div>
+
+        <div class="alt-when">
+          7월 15일 수요일<br>
+          11:00 ~ 12:00
+        </div>
+
       </div>
 
       <div>
         <div class="section-title">참여자 선택</div>
+
         <div class="opinion-list">
-          <div class="opinion-row"><span>좋아요</span><div class="track"><div class="fill good" style="width:66.67%"></div></div><strong>4</strong></div>
-          <div class="opinion-row"><span>가능해요</span><div class="track"><div class="fill possible" style="width:33.33%"></div></div><strong>2</strong></div>
-          <div class="opinion-row"><span>가능하지만 피하고 싶어요</span><div class="track"><div class="fill avoid" style="width:0%"></div></div><strong>0</strong></div>
+
+          <div class="opinion-row">
+            <span>좋아요</span>
+
+            <div class="track">
+              <div
+                class="fill good"
+                style="width:66.67%"
+              ></div>
+            </div>
+
+            <strong>4</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill possible"
+                style="width:33.33%"
+              ></div>
+            </div>
+
+            <strong>2</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능하지만 피하고 싶어요</span>
+
+            <div class="track">
+              <div
+                class="fill avoid"
+                style="width:0%"
+              ></div>
+            </div>
+
+            <strong>0</strong>
+          </div>
+
         </div>
       </div>
 
       <div>
         <div class="section-title">상세 정보</div>
+
         <div class="detail-list">
-          <div class="detail-row"><span>필수 참여자</span><strong>2 / 2</strong></div>
-          <div class="detail-row"><span>선택 참여자</span><strong>4 / 4</strong></div>
-          <div class="detail-row"><span>회의 전후 여유</span><strong>30분</strong></div>
+
+          <div class="detail-row">
+            <span>필수 참여자</span>
+            <strong>2 / 2</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>선택 참여자</span>
+            <strong>4 / 4</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>회의 전후 여유</span>
+            <strong>30분</strong>
+          </div>
+
         </div>
       </div>
     </button>
 
-    <button class="schedule-button alt" data-schedule="3" type="button">
-      <div class="alt-rank">3순위</div>
+    <button
+      class="schedule-button alt"
+      data-schedule="3"
+      type="button"
+    >
+      <div class="alt-rank">
+        3순위
+      </div>
 
       <div class="alt-main">
-        <div class="alt-score">71점</div>
-        <div class="alt-when">7월 16일 목요일<br>16:00 ~ 17:00</div>
+
+        <div class="alt-fitness">
+          적합도 71%
+        </div>
+
+        <div class="alt-when">
+          7월 16일 목요일<br>
+          16:00 ~ 17:00
+        </div>
+
       </div>
 
       <div>
         <div class="section-title">참여자 선택</div>
+
         <div class="opinion-list">
-          <div class="opinion-row"><span>좋아요</span><div class="track"><div class="fill good" style="width:50%"></div></div><strong>3</strong></div>
-          <div class="opinion-row"><span>가능해요</span><div class="track"><div class="fill possible" style="width:33.33%"></div></div><strong>2</strong></div>
-          <div class="opinion-row"><span>가능하지만 피하고 싶어요</span><div class="track"><div class="fill avoid" style="width:16.67%"></div></div><strong>1</strong></div>
+
+          <div class="opinion-row">
+            <span>좋아요</span>
+
+            <div class="track">
+              <div
+                class="fill good"
+                style="width:50%"
+              ></div>
+            </div>
+
+            <strong>3</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill possible"
+                style="width:33.33%"
+              ></div>
+            </div>
+
+            <strong>2</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>가능하지만 피하고 싶어요</span>
+
+            <div class="track">
+              <div
+                class="fill avoid"
+                style="width:16.67%"
+              ></div>
+            </div>
+
+            <strong>1</strong>
+          </div>
+
         </div>
       </div>
 
       <div>
         <div class="section-title">상세 정보</div>
+
         <div class="detail-list">
-          <div class="detail-row"><span>필수 참여자</span><strong>2 / 2</strong></div>
-          <div class="detail-row"><span>선택 참여자</span><strong>3 / 4</strong></div>
-          <div class="detail-row"><span>회의 전후 여유</span><strong>없음</strong></div>
+
+          <div class="detail-row">
+            <span>필수 참여자</span>
+            <strong>2 / 2</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>선택 참여자</span>
+            <strong>3 / 4</strong>
+          </div>
+
+          <div class="detail-row">
+            <span>회의 전후 여유</span>
+            <strong>없음</strong>
+          </div>
+
         </div>
       </div>
     </button>
+
   </section>
 
   <div class="action-area">
-    <button class="primary-action" id="decideButton" type="button">이 일정으로 결정하기</button>
-    <div class="action-note">결정하면 일정에 추가되며 참여자에게 회의 초대 알림을 보내요.</div>
+
+    <button
+      class="primary-action"
+      id="decideButton"
+      type="button"
+    >
+      이 일정으로 결정하기
+    </button>
+
+    <div class="action-note">
+      결정하면 일정에 추가되며 참여자에게 회의 초대 알림을 보내요.
+    </div>
+
   </div>
+
 </main>
 
 <script>
 let selectedSchedule = 1;
-const scheduleButtons = [...document.querySelectorAll(".schedule-button")];
 
-scheduleButtons.forEach(button => {
+const scheduleButtons = [
+  ...document.querySelectorAll(".schedule-button")
+];
+
+scheduleButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    selectedSchedule = Number(button.dataset.schedule);
-    scheduleButtons.forEach(item => item.classList.toggle("selected", item === button));
+    selectedSchedule = Number(
+      button.dataset.schedule
+    );
+
+    scheduleButtons.forEach((item) => {
+      item.classList.toggle(
+        "selected",
+        item === button
+      );
+    });
   });
 });
 
-document.getElementById("decideButton").addEventListener("click", () => {
-  const selected = document.querySelector(`.schedule-button[data-schedule="${selectedSchedule}"]`);
-  const label = selected.querySelector(".rank-pill, .alt-rank").textContent;
-  sessionStorage.setItem("autoslotSelectedSchedule", String(selectedSchedule));
-  sessionStorage.setItem("autoslotSelectedLabel", label);
-  location.href = "scene5.html";
-});
+document
+  .getElementById("decideButton")
+  .addEventListener("click", () => {
+    const selected = document.querySelector(
+      `.schedule-button[data-schedule="${selectedSchedule}"]`
+    );
+
+    const label = selected
+      .querySelector(".rank-pill, .alt-rank")
+      .textContent;
+
+    sessionStorage.setItem(
+      "autoslotSelectedSchedule",
+      String(selectedSchedule)
+    );
+
+    sessionStorage.setItem(
+      "autoslotSelectedLabel",
+      label
+    );
+
+    location.href = "scene5.html";
+  });
 </script>
+
 </body>
 </html>
