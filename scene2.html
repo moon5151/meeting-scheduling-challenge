@@ -15,9 +15,6 @@
   --accent:#d84d2c;
   --accent-soft:#fff2ed;
 
-  --good:#2f6df6;
-  --good-soft:#edf3ff;
-
   --possible:#6f91e8;
   --possible-soft:#f1f5ff;
 
@@ -219,7 +216,7 @@ h1{
   transform:translateY(-50%);
   height:20px;
   border-radius:7px;
-  background-color:var(--good);
+  background-color:var(--primary);
   background-image:repeating-linear-gradient(
     135deg,
     rgba(255,255,255,.14) 0,
@@ -253,7 +250,7 @@ h1{
 
 .response-options{
   display:grid;
-  grid-template-columns:1fr 1fr 1.7fr 1fr;
+  grid-template-columns:1fr 1.7fr 1fr;
   gap:10px;
 }
 
@@ -272,16 +269,11 @@ h1{
   background:var(--soft);
 }
 
-.response-option[data-value="good"].selected{
-  color:#fff;
-  background:var(--good);
-  border-color:var(--good);
-}
 
 .response-option[data-value="possible"].selected{
-  color:#2957b5;
-  background:#eaf1ff;
-  border-color:#7ea3ff;
+  color:#fff;
+  background:var(--primary);
+  border-color:var(--primary);
 }
 
 .response-option[data-value="avoid"].selected{
@@ -362,14 +354,10 @@ h1{
 }
 
 .opinion-row:nth-child(1) .bar-fill{
-  background:var(--good);
+  background:var(--primary);
 }
 
 .opinion-row:nth-child(2) .bar-fill{
-  background:#8fb0ff;
-}
-
-.opinion-row:nth-child(3) .bar-fill{
   background:#d7e2ff;
 }
 
@@ -385,11 +373,6 @@ h1{
 
 .opinion-row:nth-child(2) span,
 .opinion-row:nth-child(2) strong{
-  color:#5274c7;
-}
-
-.opinion-row:nth-child(3) span,
-.opinion-row:nth-child(3) strong{
   color:#8b9bc2;
 }
 
@@ -491,7 +474,7 @@ h1{
   }
 
   .response-options{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
   }
 
   .response-option.impossible{
@@ -581,13 +564,6 @@ h1{
           </p>
 
           <div class="response-options">
-            <button
-              type="button"
-              class="response-option"
-              data-value="good"
-            >
-              좋아요
-            </button>
 
             <button
               type="button"
@@ -621,19 +597,11 @@ h1{
 
             <div class="opinion-list">
               <div class="opinion-row">
-                <span>좋아요</span>
-                <div class="bar-track">
-                  <div class="bar-fill" style="width:83.33%"></div>
-                </div>
-                <strong>5명</strong>
-              </div>
-
-              <div class="opinion-row">
                 <span>가능해요</span>
                 <div class="bar-track">
-                  <div class="bar-fill" style="width:16.67%"></div>
+                  <div class="bar-fill" style="width:100%"></div>
                 </div>
-                <strong>1명</strong>
+                <strong>6명</strong>
               </div>
 
               <div class="opinion-row">
@@ -738,13 +706,6 @@ h1{
           </p>
 
           <div class="response-options">
-            <button
-              type="button"
-              class="response-option"
-              data-value="good"
-            >
-              좋아요
-            </button>
 
             <button
               type="button"
@@ -778,19 +739,11 @@ h1{
 
             <div class="opinion-list">
               <div class="opinion-row">
-                <span>좋아요</span>
-                <div class="bar-track">
-                  <div class="bar-fill" style="width:66.67%"></div>
-                </div>
-                <strong>4명</strong>
-              </div>
-
-              <div class="opinion-row">
                 <span>가능해요</span>
                 <div class="bar-track">
-                  <div class="bar-fill" style="width:33.33%"></div>
+                  <div class="bar-fill" style="width:100%"></div>
                 </div>
-                <strong>2명</strong>
+                <strong>6명</strong>
               </div>
 
               <div class="opinion-row">
@@ -888,13 +841,6 @@ h1{
           </p>
 
           <div class="response-options">
-            <button
-              type="button"
-              class="response-option"
-              data-value="good"
-            >
-              좋아요
-            </button>
 
             <button
               type="button"
@@ -928,19 +874,11 @@ h1{
 
             <div class="opinion-list">
               <div class="opinion-row">
-                <span>좋아요</span>
-                <div class="bar-track">
-                  <div class="bar-fill" style="width:33.33%"></div>
-                </div>
-                <strong>2명</strong>
-              </div>
-
-              <div class="opinion-row">
                 <span>가능해요</span>
                 <div class="bar-track">
-                  <div class="bar-fill" style="width:33.33%"></div>
+                  <div class="bar-fill" style="width:66.67%"></div>
                 </div>
-                <strong>2명</strong>
+                <strong>4명</strong>
               </div>
 
               <div class="opinion-row">
