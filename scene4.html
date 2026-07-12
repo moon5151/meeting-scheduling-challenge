@@ -16,6 +16,7 @@
   --blue-line:#a9bff4;
   --possible:#8fb0ff;
   --avoid:#d7e2ff;
+  --impossible:#353a44;
 }
 
 *{
@@ -122,23 +123,34 @@ h1{
   display:block;
 }
 
+.rank-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+}
+
 .rank-pill{
   display:inline-flex;
+  align-items:center;
   padding:8px 13px;
-  margin-bottom:16px;
   border-radius:999px;
-  background:#e8f0ff;
-  color:#2159ce;
+  background:#f1f3f5;
+  color:#4b5563;
   font-size:14px;
   font-weight:800;
 }
 
-.fitness{
-  margin-bottom:14px;
-  color:var(--blue);
-  font-size:30px;
+.recommend-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  border:1px solid #9db9ff;
+  border-radius:8px;
+  background:#fff;
+  color:#2164d9;
+  font-size:12px;
   font-weight:800;
-  line-height:1.1;
 }
 
 .date{
@@ -229,11 +241,6 @@ h1{
   font-weight:800;
 }
 
-.alt-fitness{
-  color:#2b2f36;
-  font-size:24px;
-  font-weight:800;
-}
 
 .alt-when{
   margin-top:9px;
@@ -273,16 +280,16 @@ h1{
   border-radius:999px;
 }
 
-.good{
+.possible{
   background:var(--blue);
 }
 
-.possible{
+.avoid{
   background:var(--possible);
 }
 
-.avoid{
-  background:var(--avoid);
+.impossible{
+  background:var(--impossible);
 }
 
 .detail-list{
@@ -375,12 +382,9 @@ h1{
   >
     <div class="primary-top">
 
-      <div class="rank-pill">
-        1순위
-      </div>
-
-      <div class="fitness">
-        적합도 92%
+      <div class="rank-row">
+        <span class="rank-pill">1순위</span>
+        <span class="recommend-pill">추천</span>
       </div>
 
       <div class="date">
@@ -406,7 +410,7 @@ h1{
 
         <div class="reason">
           <span class="reason-dot"></span>
-          <span>참여자 5명이 ‘좋아요’로 답해 가장 높은 선호도를 보여요.</span>
+          <span>모든 참여자가 ‘가능해요’로 답해 부담 없이 참석할 수 있어요.</span>
         </div>
 
         <div class="reason">
@@ -425,29 +429,16 @@ h1{
         <div class="opinion-list">
 
           <div class="opinion-row">
-            <span>좋아요</span>
-
-            <div class="track">
-              <div
-                class="fill good"
-                style="width:83.33%"
-              ></div>
-            </div>
-
-            <strong>5</strong>
-          </div>
-
-          <div class="opinion-row">
             <span>가능해요</span>
 
             <div class="track">
               <div
                 class="fill possible"
-                style="width:16.67%"
+                style="width:100%"
               ></div>
             </div>
 
-            <strong>1</strong>
+            <strong>6</strong>
           </div>
 
           <div class="opinion-row">
@@ -456,6 +447,19 @@ h1{
             <div class="track">
               <div
                 class="fill avoid"
+                style="width:0%"
+              ></div>
+            </div>
+
+            <strong>0</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>불가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill impossible"
                 style="width:0%"
               ></div>
             </div>
@@ -505,10 +509,6 @@ h1{
 
       <div class="alt-main">
 
-        <div class="alt-fitness">
-          적합도 84%
-        </div>
-
         <div class="alt-when">
           7월 15일 수요일<br>
           11:00 ~ 12:00
@@ -522,29 +522,16 @@ h1{
         <div class="opinion-list">
 
           <div class="opinion-row">
-            <span>좋아요</span>
-
-            <div class="track">
-              <div
-                class="fill good"
-                style="width:66.67%"
-              ></div>
-            </div>
-
-            <strong>4</strong>
-          </div>
-
-          <div class="opinion-row">
             <span>가능해요</span>
 
             <div class="track">
               <div
                 class="fill possible"
-                style="width:33.33%"
+                style="width:83.33%"
               ></div>
             </div>
 
-            <strong>2</strong>
+            <strong>5</strong>
           </div>
 
           <div class="opinion-row">
@@ -553,6 +540,19 @@ h1{
             <div class="track">
               <div
                 class="fill avoid"
+                style="width:16.67%"
+              ></div>
+            </div>
+
+            <strong>1</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>불가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill impossible"
                 style="width:0%"
               ></div>
             </div>
@@ -598,10 +598,6 @@ h1{
 
       <div class="alt-main">
 
-        <div class="alt-fitness">
-          적합도 71%
-        </div>
-
         <div class="alt-when">
           7월 16일 목요일<br>
           16:00 ~ 17:00
@@ -615,29 +611,16 @@ h1{
         <div class="opinion-list">
 
           <div class="opinion-row">
-            <span>좋아요</span>
-
-            <div class="track">
-              <div
-                class="fill good"
-                style="width:50%"
-              ></div>
-            </div>
-
-            <strong>3</strong>
-          </div>
-
-          <div class="opinion-row">
             <span>가능해요</span>
 
             <div class="track">
               <div
                 class="fill possible"
-                style="width:33.33%"
+                style="width:66.67%"
               ></div>
             </div>
 
-            <strong>2</strong>
+            <strong>4</strong>
           </div>
 
           <div class="opinion-row">
@@ -646,6 +629,19 @@ h1{
             <div class="track">
               <div
                 class="fill avoid"
+                style="width:16.67%"
+              ></div>
+            </div>
+
+            <strong>1</strong>
+          </div>
+
+          <div class="opinion-row">
+            <span>불가능해요</span>
+
+            <div class="track">
+              <div
+                class="fill impossible"
                 style="width:16.67%"
               ></div>
             </div>
