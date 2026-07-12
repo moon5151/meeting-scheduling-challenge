@@ -109,29 +109,23 @@ h1{
 }
 
 .schedule-header{
-  display:grid;
-  grid-template-columns:72px 1fr;
-  align-items:stretch;
+  padding:24px 26px 20px;
   border-bottom:1px solid var(--line);
 }
 
-.index{
-  display:grid;
-  place-items:center;
-  border-right:1px solid var(--line);
+.rank{
+  display:inline-flex;
+  padding:6px 9px;
+  margin-bottom:10px;
+  border-radius:999px;
   background:var(--soft);
-  font-size:13px;
-  font-weight:800;
   color:var(--muted);
-}
-
-.schedule:first-child .index{
-  background:var(--accent-soft);
-  color:var(--accent);
+  font-size:12px;
+  font-weight:800;
 }
 
 .when-wrap{
-  padding:22px 24px;
+  padding:0;
 }
 
 .when{
@@ -463,9 +457,6 @@ h1{
     font-size:32px;
   }
 
-  .schedule-header{
-    grid-template-columns:54px 1fr;
-  }
 
   .compare-grid{
     grid-template-columns:1fr;
@@ -511,13 +502,12 @@ h1{
   <section class="schedule-list">
 
     <article class="schedule" data-schedule="1">
-      <header class="schedule-header">
-        <div class="index">01</div>
-        <div class="when-wrap">
-          <div class="when">7월 14일 화요일 · 14:00 ~ 15:00</div>
-        </div>
-      </header>
-
+  <header class="schedule-header">
+  <div class="when-wrap">
+    <div class="rank">1순위</div>
+    <div class="when">7월 14일 화요일 · 14:00 ~ 15:00</div>
+  </div>
+</header>
       <div class="timeline-wrap">
         <div class="timeline-head">
           <span>내 일정</span>
@@ -649,12 +639,12 @@ h1{
     </article>
 
     <article class="schedule" data-schedule="2">
-      <header class="schedule-header">
-        <div class="index">02</div>
-        <div class="when-wrap">
-          <div class="when">7월 15일 수요일 · 11:00 ~ 12:00</div>
-        </div>
-      </header>
+   <header class="schedule-header">
+  <div class="when-wrap">
+    <div class="rank">2순위</div>
+    <div class="when">7월 15일 수요일 · 11:00 ~ 12:00</div>
+  </div>
+</header>
 
       <div class="timeline-wrap">
         <div class="timeline-head">
@@ -787,12 +777,12 @@ h1{
     </article>
 
     <article class="schedule" data-schedule="3">
-      <header class="schedule-header">
-        <div class="index">03</div>
-        <div class="when-wrap">
-          <div class="when">7월 16일 목요일 · 16:00 ~ 17:00</div>
-        </div>
-      </header>
+ <header class="schedule-header">
+  <div class="when-wrap">
+    <div class="rank">3순위</div>
+    <div class="when">7월 16일 목요일 · 16:00 ~ 17:00</div>
+  </div>
+</header>
 
       <div class="timeline-wrap">
         <div class="timeline-head">
