@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Scene 5 · 일정 확정 완료</title>
+<style>
+:root{
+  --ink:#111214;
+  --muted:#6d7178;
+  --line:#e5e7eb;
+  --soft:#f7f8fa;
+  --blue:#2f6df6;
+  --blue-soft:#eef4ff;
+  --green:#1f9d62;
+  --green-soft:#edf9f3;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#fff;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",system-ui,sans-serif;
+  letter-spacing:-.018em;
+}
+button{font:inherit;cursor:pointer}
+.page{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:32px;
+}
+.card{
+  width:min(660px,100%);
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#fff;
+  padding:40px;
+  box-shadow:0 16px 42px rgba(18,24,40,.09);
+}
+.success-icon{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--green-soft);
+  color:var(--green);
+  font-size:28px;
+  font-weight:900;
+  margin-bottom:20px;
+}
+.eyebrow{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+h1{
+  margin:0 0 28px;
+  font-size:38px;
+  line-height:1.15;
+  letter-spacing:-.04em;
+}
+.subtitle{
+  margin:12px 0 30px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.55;
+}
+.schedule-summary{
+  margin-top:10px;
+  border:1px solid #bfd2ff;
+  border-radius:18px;
+  background:linear-gradient(180deg,#f7faff 0,#fff 100%);
+  padding:26px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:flex-start;
+}
+.schedule-label{
+  display:inline-flex;
+  padding:6px 9px;
+  border-radius:999px;
+  background:#e7efff;
+  color:#2159ce;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:12px;
+}
+.date{
+  font-size:24px;
+  font-weight:730;
+}
+.time{
+  margin-top:4px;
+  font-size:38px;
+  font-weight:790;
+  letter-spacing:-.04em;
+}
+.attendee{
+  text-align:right;
+  min-width:150px;
+}
+.attendee span{
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+}
+.attendee strong{
+  display:block;
+  margin-top:6px;
+  font-size:28px;
+}
+.status-list{
+  display:grid;
+  gap:12px;
+  margin-top:24px;
+}
+.status{
+  min-height:58px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:0 18px;
+  background:#fff;
+}
+.status-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.status-icon{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--green-soft);
+  color:var(--green);
+  font-size:13px;
+  font-weight:900;
+}
+.status-title{
+  font-size:15px;
+  font-weight:700;
+}
+.status-value{
+  color:var(--muted);
+  font-size:13px;
+}
+.action-area{
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.primary{
+  width:100%;
+  min-height:54px;
+  border:0;
+  border-radius:14px;
+  background:#111;
+  color:#fff;
+  font-weight:700;
+}
+.note{
+  margin-top:10px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+@media(max-width:640px){
+  .card{padding:28px 22px}
+  .schedule-summary{flex-direction:column}
+  .attendee{text-align:left}
+}
+
+/* 과제 화면 구분 배지 */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  padding:7px 11px;
+  border-radius:8px;
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+.eyebrow.organizer{
+  color:#245bcf;
+  background:#eef4ff;
+  border:1px solid #cfdcff;
+}
+.eyebrow.participant{
+  color:#7047c7;
+  background:#f4efff;
+  border:1px solid #dfd1ff;
+}
+.eyebrow.common{
+  color:#505762;
+  background:#f3f4f6;
+  border:1px solid #e0e2e6;
+}
+
+
+/* 프로토타입 화면 구분 헤더 */
+.eyebrow{
+  display:flex;
+  width:100%;
+  min-height:42px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:10px 18px;
+  margin-bottom:22px;
+}
+
+/* 요청된 색상 변경 */
+.eyebrow.organizer{color:#0B6B3A;background:#EAFBF2;border-color:#B7E7CC}
+.primary{background:#3182F6}
+
+/* 디테일 수정: 체크 아이콘을 토스 블루와 흰색으로 간결하게 표현 */
+.success-icon,
+.status-icon{
+  background:#3182F6;
+  color:#fff;
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="card">
+    <div class="eyebrow organizer">회의 주최자 화면</div>
+    <h1>회의 일정을 확정했어요.</h1>
+    
+
+    <section class="schedule-summary">
+      <div>
+        
+        <div class="date">7월 14일 화요일</div>
+        <div class="time">14:00 ~ 15:00</div>
+      </div>
+      <div class="attendee">
+        <span>참여자</span>
+        <strong>6명</strong>
+      </div>
+    </section>
+
+    <section class="status-list">
+      <div class="status">
+        <div class="status-left">
+          <div class="status-icon">✓</div>
+          <div class="status-title">캘린더 등록</div>
+        </div>
+        <div class="status-value">완료</div>
+      </div>
+
+      <div class="status">
+        <div class="status-left">
+          <div class="status-icon">✓</div>
+          <div class="status-title">참여자에게 알림</div>
+        </div>
+        <div class="status-value">6명 전송 완료</div>
+      </div>
+
+      <div class="status">
+        <div class="status-left">
+          <div class="status-icon">✓</div>
+          <div class="status-title">회의 알림 예약</div>
+        </div>
+        <div class="status-value">하루 전 알림</div>
+      </div>
+    </section>
+
+    <div class="action-area">
+      <button class="primary" id="homeButton" type="button">회의 현황 보기</button>
+      <div class="note">확정된 일정은 캘린더에서 언제든 확인할 수 있어요.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+document.getElementById("homeButton").addEventListener("click",()=>{location.href="index.html";});
+</script>
+</body>
+</html>

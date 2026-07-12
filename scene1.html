@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Scene 1 · 회의 생성</title>
+<style>
+:root{
+  --ink:#111214;
+  --muted:#6d7178;
+  --line:#e5e7eb;
+  --soft:#f7f8fa;
+  --blue:#2f6df6;
+  --blue-soft:#eef4ff;
+  --danger:#c23b3b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",system-ui,sans-serif;
+  letter-spacing:-.018em
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.page{
+  width:min(980px,calc(100% - 40px));
+  margin:0 auto;
+  padding:48px 0 96px
+}
+.eyebrow{font-size:13px;color:var(--muted);margin-bottom:12px}
+h1{margin:0;font-size:40px;line-height:1.12;letter-spacing:-.04em}
+.subtitle{margin:12px 0 36px;color:var(--muted);font-size:18px;line-height:1.55}
+.form{
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff
+}
+.section{
+  padding:28px 30px;
+  border-bottom:1px solid var(--line)
+}
+.section:last-child{border-bottom:0}
+.section-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:18px
+}
+.section-title{font-size:18px;font-weight:760}
+.section-desc{font-size:13px;color:var(--muted);margin-top:5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field-group{display:grid;gap:8px}
+label{font-size:13px;font-weight:700;color:#454a52}
+.input, select{
+  width:100%;
+  min-height:48px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  padding:0 14px;
+  color:var(--ink);
+  outline:none
+}
+.input:focus,select:focus{border-color:#a9bff4;box-shadow:0 0 0 3px rgba(47,109,246,.08)}
+.attendee-box{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  background:#fbfbfc
+}
+.attendee-box + .attendee-box{margin-top:14px}
+.attendee-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:12px
+}
+.attendee-title{font-size:14px;font-weight:760}
+.attendee-count{font-size:12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:36px;
+  padding:0 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  font-size:13px
+}
+.avatar{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--blue-soft);color:#245bcf;
+  display:grid;place-items:center;font-size:11px;font-weight:800
+}
+.chip button{
+  border:0;background:transparent;color:#9297a0;padding:0;font-size:15px
+}
+.add-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:12px}
+.add-btn{
+  min-width:92px;border:1px solid var(--line);
+  border-radius:12px;background:#fff;color:#353a42;font-weight:700
+}
+.option-row{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:4px 0
+}
+.option-row input{
+  width:18px;height:18px;margin-top:2px;
+  accent-color:var(--blue)
+}
+.option-title{font-size:14px;font-weight:700}
+.option-desc{font-size:12px;color:var(--muted);margin-top:4px}
+.action-area{
+  width:min(560px,100%);
+  margin:40px auto 0;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:0 10px 28px rgba(18,24,40,.08);
+  background:#fff
+}
+.primary{
+  width:100%;min-height:54px;border:0;border-radius:14px;
+  background:#111;color:#fff;font-weight:700
+}
+.note{margin-top:11px;color:var(--muted);font-size:13px;line-height:1.5;text-align:center}
+@media(max-width:760px){
+  .page{width:min(100% - 24px,720px)}
+  .grid{grid-template-columns:1fr}
+}
+
+/* 과제 화면 구분 배지 */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  padding:7px 11px;
+  border-radius:8px;
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+.eyebrow.organizer{
+  color:#245bcf;
+  background:#eef4ff;
+  border:1px solid #cfdcff;
+}
+.eyebrow.participant{
+  color:#7047c7;
+  background:#f4efff;
+  border:1px solid #dfd1ff;
+}
+.eyebrow.common{
+  color:#505762;
+  background:#f3f4f6;
+  border:1px solid #e0e2e6;
+}
+
+
+/* 프로토타입 화면 구분 헤더 */
+.eyebrow{
+  display:flex;
+  width:100%;
+  min-height:42px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:10px 18px;
+  margin-bottom:22px;
+}
+
+/* 시간·날짜 피커 기본 UI 통일 */
+.picker-shell{position:relative;width:100%}
+.picker-shell select,.picker-shell .input{
+  width:100%;
+  min-height:48px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  padding:0 44px 0 14px;
+  color:var(--ink);
+  outline:none;
+  appearance:none;
+  -webkit-appearance:none;
+}
+.picker-shell::after{
+  position:absolute;right:15px;top:50%;transform:translateY(-50%);
+  color:#555b65;pointer-events:none;font-size:15px;line-height:1;
+}
+.select-shell::after{content:"⌄";font-weight:800;top:46%}
+.date-shell::after{content:"▣";font-size:13px}
+.date-shell input::-webkit-calendar-picker-indicator{opacity:0;position:absolute;inset:0;width:100%;height:100%;cursor:pointer}
+.picker-shell select:focus,.picker-shell .input:focus{border-color:#a9bff4;box-shadow:0 0 0 3px rgba(47,109,246,.08)}
+
+/* 요청된 색상 변경 */
+.eyebrow.organizer{color:#0B6B3A;background:#EAFBF2;border-color:#B7E7CC}
+.primary{background:#3182F6}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="eyebrow organizer">회의 주최자 화면</div>
+  <h1>모두에게 괜찮은 회의 시간을 찾아볼까요?</h1>
+  <div class="subtitle">회의 정보를 입력하면 참여자의 일정과 선호하는 시간을 함께 고려해 가능한 일정을 찾아요.</div>
+
+  <section class="form">
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-title">회의 정보</div>
+          <div class="section-desc">회의 제목과 필요한 시간을 입력해주세요.</div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field-group" style="grid-column:1/-1">
+          <label for="title">회의 제목</label>
+          <input class="input" id="title" value="신규 서비스 방향성 논의" />
+        </div>
+        <div class="field-group">
+          <label for="duration">회의 시간</label>
+          <div class="picker-shell select-shell">
+            <select id="duration">
+              <option>30분</option>
+              <option selected>1시간</option>
+              <option>1시간 30분</option>
+              <option>2시간</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="deadline">회의 마감 날짜</label>
+          <div class="picker-shell date-shell">
+            <input class="input" id="deadline" type="date" value="2026-07-17" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-title">참여자</div>
+          <div class="section-desc">'필수'에 추가한 사람을 우선으로 일정을 찾아요.</div>
+        </div>
+      </div>
+
+      <div class="attendee-box">
+        <div class="attendee-head">
+          <div class="attendee-title">필수</div>
+          <div class="attendee-count">2명</div>
+        </div>
+        <div class="chips" id="requiredChips">
+          <div class="chip"><span class="avatar">박</span>박상미<button type="button">×</button></div>
+          <div class="chip"><span class="avatar">김</span>김지수<button type="button">×</button></div>
+        </div>
+        <div class="add-row">
+          <input class="input" id="requiredInput" placeholder="이름 또는 이메일" />
+          <button class="add-btn" type="button" data-target="requiredChips" data-input="requiredInput">추가</button>
+        </div>
+      </div>
+
+      <div class="attendee-box">
+        <div class="attendee-head">
+          <div class="attendee-title">선택</div>
+          <div class="attendee-count">4명</div>
+        </div>
+        <div class="chips" id="optionalChips">
+          <div class="chip"><span class="avatar">이</span>이서준<button type="button">×</button></div>
+          <div class="chip"><span class="avatar">최</span>최유진<button type="button">×</button></div>
+          <div class="chip"><span class="avatar">정</span>정다은<button type="button">×</button></div>
+          <div class="chip"><span class="avatar">한</span>한민수<button type="button">×</button></div>
+        </div>
+        <div class="add-row">
+          <input class="input" id="optionalInput" placeholder="이름 또는 이메일" />
+          <button class="add-btn" type="button" data-target="optionalChips" data-input="optionalInput">추가</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div>
+          <div class="section-title">알림</div>
+          
+        </div>
+      </div>
+      <label class="option-row">
+        <input type="checkbox" checked />
+        <span>
+          <div class="option-title">3시간마다 일정 조율 알림 보내기</div>
+          <div class="option-desc">응답을 완료한 참여자에게는 알림이 가지 않아요.</div>
+        </span>
+      </label>
+    </div>
+  </section>
+
+  <div class="action-area">
+    <button class="primary" id="findButton" type="button">일정 찾기</button>
+  </div>
+</main>
+
+<script>
+document.querySelectorAll(".add-btn").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const input=document.getElementById(button.dataset.input);
+    const value=input.value.trim();
+    if(!value) return;
+    const chips=document.getElementById(button.dataset.target);
+    const chip=document.createElement("div");
+    chip.className="chip";
+    chip.innerHTML=`<span class="avatar">${value.slice(0,1)}</span>${value}<button type="button">×</button>`;
+    chips.appendChild(chip);
+    input.value="";
+  });
+});
+
+document.addEventListener("click",e=>{
+  if(e.target.matches(".chip button")) e.target.closest(".chip").remove();
+});
+
+document.getElementById("findButton").addEventListener("click",()=>{location.href="scene1_5.html";});
+</script>
+</body>
+</html>
