@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Scene 3 · 참여자 일정 응답</title>
+
 <style>
 :root{
   --ink:#111214;
@@ -16,7 +17,11 @@
   --blue-light:#d7e2ff;
   --danger:#2f3440;
 }
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
   background:#fff;
@@ -24,39 +29,68 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",system-ui,sans-serif;
   letter-spacing:-.018em;
 }
-button,input{font:inherit}
-button{cursor:pointer}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
 .page{
   width:min(1080px,calc(100% - 40px));
   margin:0 auto;
   padding:48px 0 96px;
 }
+
 .eyebrow{
+  display:flex;
+  width:100%;
+  min-height:42px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:10px 18px;
+  margin-bottom:22px;
+  border-radius:8px;
   font-size:13px;
-  color:var(--muted);
-  margin-bottom:12px;
+  font-weight:800;
+  letter-spacing:-.01em;
 }
+
+.eyebrow.participant{
+  color:#B42318;
+  background:#FFF0EE;
+  border:1px solid #F7C5BF;
+}
+
 h1{
   margin:0;
   font-size:40px;
   line-height:1.12;
   letter-spacing:-.04em;
 }
+
 .subtitle{
   margin:12px 0 36px;
   color:var(--muted);
   font-size:18px;
 }
+
 .candidates{
   display:grid;
   gap:20px;
 }
+
 .candidate{
-  border:1px solid var(--line);
-  border-radius:18px;
   overflow:hidden;
   background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
 }
+
 .candidate-head{
   display:flex;
   justify-content:space-between;
@@ -65,57 +99,66 @@ h1{
   padding:24px 26px 20px;
   border-bottom:1px solid var(--line);
 }
+
 .rank{
   display:inline-flex;
   padding:6px 9px;
+  margin-bottom:10px;
   border-radius:999px;
   background:var(--soft);
   color:var(--muted);
   font-size:12px;
   font-weight:800;
-  margin-bottom:10px;
 }
+
 .when{
   font-size:26px;
   font-weight:740;
   letter-spacing:-.03em;
 }
+
 .timeline-wrap{
   padding:24px 26px 26px;
 }
+
 .timeline-head{
   display:grid;
   grid-template-columns:92px 1fr;
   align-items:end;
   margin-bottom:10px;
 }
+
 .timeline-head span:first-child{
-  font-size:13px;
   color:var(--muted);
+  font-size:13px;
 }
+
 .hours{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  font-size:11px;
   color:#8a8f98;
+  font-size:11px;
 }
+
 .timeline{
   display:grid;
   grid-template-columns:92px 1fr;
-  gap:0;
   align-items:stretch;
 }
+
 .timeline-label{
   display:flex;
   align-items:center;
+  padding-right:14px;
   color:var(--muted);
   font-size:13px;
-  padding-right:14px;
 }
+
 .timeline-track{
   position:relative;
   min-height:70px;
+  overflow:hidden;
   border:1px solid var(--line);
   background:
     repeating-linear-gradient(
@@ -126,224 +169,105 @@ h1{
       #eef0f3 12.5%
     ),
     #fbfbfc;
-  overflow:hidden;
 }
+
 .busy{
   position:absolute;
-  top:12px;
+  top:50%;
+  transform:translateY(-50%);
   height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
   border-radius:6px;
   background:#dfe3e8;
   color:#535964;
   font-size:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   white-space:nowrap;
-  overflow:hidden;
 }
+
 .proposed{
   position:absolute;
   bottom:10px;
   height:26px;
-  border-radius:7px;
-  background:var(--blue);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:7px;
+  background:var(--blue);
+  box-shadow:0 4px 12px rgba(47,109,246,.22);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
   white-space:nowrap;
-  box-shadow:0 4px 12px rgba(47,109,246,.22);transform:translateX(0);
 }
+
+.proposed.aligned{
+  top:50%;
+  bottom:auto;
+  transform:translateY(-50%);
+  height:20px;
+  box-shadow:none;
+}
+
 .response{
   padding:0 26px 26px;
 }
+
 .response-title{
-  font-size:13px;
+  margin-bottom:6px;
   color:var(--muted);
-  margin-bottom:10px;
+  font-size:13px;
 }
+
+.response-description{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
 .choice-set{
   display:grid;
   grid-template-columns:1fr 1fr 1.7fr 1fr;
   gap:10px;
 }
+
 .choice{
   min-height:46px;
   border:1px solid var(--line);
-  background:#fff;
   border-radius:12px;
+  background:#fff;
   color:#3e434b;
   font-size:14px;
   font-weight:700;
   transition:.16s ease;
 }
+
 .choice:hover{
   border-color:#c7d4f5;
   background:#fafcff;
 }
+
 .choice.selected.good{
   border-color:var(--blue);
   background:var(--blue);
   color:#fff;
 }
+
 .choice.selected.possible{
   border-color:#7ea3ff;
   background:#eaf1ff;
   color:#2957b5;
 }
+
 .choice.selected.avoid{
   border-color:#b7c8ee;
   background:#f2f6ff;
   color:#5e719f;
 }
-.choice.selected.impossible{
-  border-color:#353a44;
-  background:#353a44;
-  color:#fff;
-}
-.impossible-panel{
-  display:none;
-  margin-top:22px;
-  padding:22px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:var(--soft);
-}
-.impossible-panel{display:block}
 
-.panel-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:20px;
-}
-.panel-header h2{margin:0 0 6px}
-.panel-header p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
-}
-.panel-content{margin-top:18px}
-.impossible-panel.disabled{
-  color:#a8adb5;
-  background:#fafafa;
-}
-.impossible-panel.disabled .panel-header p,
-.impossible-panel.disabled .panel-note{
-  color:#b4b8bf;
-}
-.impossible-panel.disabled .panel-content{
-  opacity:.38;
-  pointer-events:none;
-}
-
-.impossible-panel h2{
-  margin:0 0 16px;
-  font-size:17px;
-}
-.time-rows{
-  display:grid;
-  gap:10px;
-}
-.time-row{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr auto;
-  gap:10px;
-}
-.field{
-  min-height:44px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#fff;
-  padding:0 12px;
-  display:flex;
-  align-items:center;
-  color:#3f454d;
-  font-size:14px;
-}
-.icon-btn{
-  width:44px;
-  min-height:44px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#fff;
-  color:#545a63;
-  font-size:20px;
-}
-.add-time{
-  margin-top:12px;
-  border:0;
-  background:transparent;
-  color:var(--blue);
-  font-weight:700;
-  padding:4px 0;
-}
-.panel-note{
-  margin-top:12px;
-  color:var(--muted);
-  font-size:13px;
-}
-.action-area{
-  width:min(560px,100%);
-  margin:42px auto 0;
-  padding:24px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  box-shadow:0 10px 28px rgba(18,24,40,.08);
-  background:#fff;
-}
-.primary{
-  width:100%;
-  min-height:54px;
-  border:0;
-  border-radius:14px;
-  background:#111;
-  color:#fff;
-  font-weight:700;
-}
-.note{
-  margin-top:11px;
-  color:var(--muted);
-  font-size:13px;
-  text-align:center;
-}
-@media(max-width:860px){
-  .choice-set{grid-template-columns:1fr 1fr}
-  .time-row{grid-template-columns:1fr 1fr}
-  .time-row .icon-btn{grid-column:2}
-}
-
-/* 과제 화면 구분 배지 */
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  width:max-content;
-  padding:7px 11px;
-  border-radius:8px;
-  font-weight:800;
-  letter-spacing:-.01em;
-}
-.eyebrow.organizer{
-  color:#245bcf;
-  background:#eef4ff;
-  border:1px solid #cfdcff;
-}
-.eyebrow.participant{
-  color:#7047c7;
-  background:#f4efff;
-  border:1px solid #dfd1ff;
-}
-.eyebrow.common{
-  color:#505762;
-  background:#f3f4f6;
-  border:1px solid #e0e2e6;
-}
-
-
-/* 가능한 응답 3종과 불가능 응답을 영역으로 구분 */
 .choice.impossible{
   position:relative;
   margin-left:10px;
@@ -351,6 +275,7 @@ h1{
   background:#f7f8fa;
   color:#303640;
 }
+
 .choice.impossible::before{
   content:"";
   position:absolute;
@@ -360,213 +285,439 @@ h1{
   width:1px;
   background:#d9dce1;
 }
-@media(max-width:860px){
-  .choice.impossible{margin-left:0}
-  .choice.impossible::before{display:none}
+
+.choice.selected.impossible{
+  border-color:#353a44;
+  background:#353a44;
+  color:#fff;
 }
 
+.action-area{
+  width:min(560px,100%);
+  margin:42px auto 0;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(18,24,40,.08);
+}
 
-/* 프로토타입 화면 구분 헤더 */
-.eyebrow{
-  display:flex;
+.primary{
   width:100%;
-  min-height:42px;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:10px 18px;
-  margin-bottom:22px;
+  min-height:54px;
+  border:0;
+  border-radius:14px;
+  background:#3182F6;
+  color:#fff;
+  font-weight:700;
 }
 
-/* 겹치는 일정이 없으면 후보 시간을 다른 일정과 같은 행에 표시 */
-.proposed.aligned{top:12px;bottom:auto;height:20px;box-shadow:none}
+.note{
+  margin-top:11px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+  text-align:center;
+}
 
-/* 요청된 색상 변경 */
-.eyebrow.participant{color:#B42318;background:#FFF0EE;border-color:#F7C5BF}
-.primary{background:#3182F6}
+@media(max-width:860px){
+  .page{
+    width:min(100% - 24px,720px);
+    padding-top:34px;
+  }
 
-/* 디테일 수정: 1·2순위의 일정과 후보 시간을 타임라인 중앙에 정렬 */
-.candidate[data-candidate="1"] .busy,
-.candidate[data-candidate="2"] .busy,
-.candidate[data-candidate="1"] .proposed.aligned,
-.candidate[data-candidate="2"] .proposed.aligned{
-  top:24px;
+  h1{
+    font-size:32px;
+  }
+
+  .choice-set{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .choice.impossible{
+    margin-left:0;
+  }
+
+  .choice.impossible::before{
+    display:none;
+  }
 }
 </style>
 </head>
+
 <body>
 <main class="page">
+
   <div class="eyebrow participant">회의 참여자 화면</div>
+
   <h1>3개의 후보 시간을 확인하고 답해주세요.</h1>
-  <div class="subtitle">내 일정과 선호하는 시간을 함께 확인할 수 있어요.</div>
+
+  <div class="subtitle">
+    내 일정과 선호하는 시간을 함께 확인할 수 있어요.
+  </div>
 
   <section class="candidates">
+
     <article class="candidate" data-candidate="1">
+
       <header class="candidate-head">
         <div>
           <div class="rank">1순위</div>
-          <div class="when">7월 14일 화요일 · 14:00 ~ 15:00</div>
-        </div>
-      </header>
-      <div class="timeline-wrap">
-        <div class="timeline-head">
-          <span>내 일정</span>
-          <div class="hours"><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span></div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-label">7월 14일</div>
-          <div class="timeline-track">
-            <div class="busy" style="left:0%;width:25%;">팀 주간회의</div>
-            <div class="busy" style="left:50%;width:12.5%;">점심</div>
-            <div class="proposed aligned" style="left:62.5%;width:12.5%;">후보 시간</div>
+          <div class="when">
+            7월 14일 화요일 · 14:00 ~ 15:00
           </div>
         </div>
-      </div>
-      <div class="response">
-        <div class="response-title">이 시간은 어떠신가요?</div>
-        <div class="choice-set">
-          <button class="choice good">좋아요</button>
-          <button class="choice possible">가능해요</button>
-          <button class="choice avoid">가능하지만 피하고 싶어요</button>
-          <button class="choice impossible">불가능해요</button>
+      </header>
+
+      <div class="timeline-wrap">
+
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
         </div>
+
+        <div class="timeline">
+
+          <div class="timeline-label">
+            7월 14일
+          </div>
+
+          <div class="timeline-track">
+            <div
+              class="busy"
+              style="left:0%;width:25%;"
+            >
+              팀 주간회의
+            </div>
+
+            <div
+              class="busy"
+              style="left:50%;width:12.5%;"
+            >
+              점심
+            </div>
+
+            <div
+              class="proposed aligned"
+              style="left:62.5%;width:12.5%;"
+            >
+              후보 시간
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="response">
+
+        <div class="response-title">
+          이 시간은 어떠신가요?
+        </div>
+
+        <p class="response-description">
+          캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
+        </p>
+
+        <div class="choice-set">
+          <button class="choice good" type="button">
+            좋아요
+          </button>
+
+          <button class="choice possible" type="button">
+            가능해요
+          </button>
+
+          <button class="choice avoid" type="button">
+            가능하지만 피하고 싶어요
+          </button>
+
+          <button class="choice impossible" type="button">
+            불가능해요
+          </button>
+        </div>
+
       </div>
     </article>
 
     <article class="candidate" data-candidate="2">
+
       <header class="candidate-head">
         <div>
           <div class="rank">2순위</div>
-          <div class="when">7월 15일 수요일 · 11:00 ~ 12:00</div>
-        </div>
-      </header>
-      <div class="timeline-wrap">
-        <div class="timeline-head">
-          <span>내 일정</span>
-          <div class="hours"><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span></div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-label">7월 15일</div>
-          <div class="timeline-track">
-            <div class="busy" style="left:0%;width:25%;">외근</div>
-            <div class="busy" style="left:37.5%;width:12.5%;">점심</div>
-            <div class="proposed aligned" style="left:25%;width:12.5%;">후보 시간</div>
+          <div class="when">
+            7월 15일 수요일 · 11:00 ~ 12:00
           </div>
         </div>
-      </div>
-      <div class="response">
-        <div class="response-title">이 시간은 어떠신가요?</div>
-        <div class="choice-set">
-          <button class="choice good">좋아요</button>
-          <button class="choice possible">가능해요</button>
-          <button class="choice avoid">가능하지만 피하고 싶어요</button>
-          <button class="choice impossible">불가능해요</button>
+      </header>
+
+      <div class="timeline-wrap">
+
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
         </div>
+
+        <div class="timeline">
+
+          <div class="timeline-label">
+            7월 15일
+          </div>
+
+          <div class="timeline-track">
+            <div
+              class="busy"
+              style="left:0%;width:25%;"
+            >
+              외근
+            </div>
+
+            <div
+              class="busy"
+              style="left:37.5%;width:12.5%;"
+            >
+              점심
+            </div>
+
+            <div
+              class="proposed aligned"
+              style="left:25%;width:12.5%;"
+            >
+              후보 시간
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="response">
+
+        <div class="response-title">
+          이 시간은 어떠신가요?
+        </div>
+
+        <p class="response-description">
+          캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
+        </p>
+
+        <div class="choice-set">
+          <button class="choice good" type="button">
+            좋아요
+          </button>
+
+          <button class="choice possible" type="button">
+            가능해요
+          </button>
+
+          <button class="choice avoid" type="button">
+            가능하지만 피하고 싶어요
+          </button>
+
+          <button class="choice impossible" type="button">
+            불가능해요
+          </button>
+        </div>
+
       </div>
     </article>
 
     <article class="candidate" data-candidate="3">
+
       <header class="candidate-head">
         <div>
           <div class="rank">3순위</div>
-          <div class="when">7월 16일 목요일 · 16:00 ~ 17:00</div>
-        </div>
-      </header>
-      <div class="timeline-wrap">
-        <div class="timeline-head">
-          <span>내 일정</span>
-          <div class="hours"><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span></div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-label">7월 16일</div>
-          <div class="timeline-track">
-            <div class="busy" style="left:87.5%;width:12.5%;">고객사 미팅</div>
-            <div class="proposed" style="left:87.5%;width:12.5%;">후보 시간</div>
+          <div class="when">
+            7월 16일 목요일 · 16:00 ~ 17:00
           </div>
         </div>
-      </div>
-      <div class="response">
-        <div class="response-title">이 시간은 어떠신가요?</div>
-        <div class="choice-set">
-          <button class="choice good">좋아요</button>
-          <button class="choice possible">가능해요</button>
-          <button class="choice avoid">가능하지만 피하고 싶어요</button>
-          <button class="choice impossible">불가능해요</button>
+      </header>
+
+      <div class="timeline-wrap">
+
+        <div class="timeline-head">
+          <span>내 일정</span>
+
+          <div class="hours">
+            <span>09</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+          </div>
         </div>
+
+        <div class="timeline">
+
+          <div class="timeline-label">
+            7월 16일
+          </div>
+
+          <div class="timeline-track">
+           <div
+  class="busy"
+  style="left:87.5%;width:12.5%;top:12px;transform:none;"
+>
+  고객사 미팅
+</div>
+
+<div
+  class="proposed"
+  style="left:87.5%;width:12.5%;bottom:10px;"
+>
+  후보 시간
+</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="response">
+
+        <div class="response-title">
+          이 시간은 어떠신가요?
+        </div>
+
+        <p class="response-description">
+          캘린더에 없는 일정이나 지금 상황을 반영해 한 번 더 확인해 주세요.
+        </p>
+
+        <div class="choice-set">
+          <button class="choice good" type="button">
+            좋아요
+          </button>
+
+          <button class="choice possible" type="button">
+            가능해요
+          </button>
+
+          <button class="choice avoid" type="button">
+            가능하지만 피하고 싶어요
+          </button>
+
+          <button class="choice impossible" type="button">
+            불가능해요
+          </button>
+        </div>
+
       </div>
     </article>
-  </section>
 
-  <section class="impossible-panel disabled" id="impossiblePanel">
-    <div class="panel-header">
-      <div>
-        <h2>모두 어려운 시간인가요?</h2>
-        <p>회의가 불가능한 시간이 더 있다면 알려주세요.</p>
-      </div>
-    </div>
-
-    <div class="panel-content">
-      <div class="time-rows" id="timeRows">
-        <div class="time-row">
-          <div class="field">7월 16일 목요일</div>
-          <div class="field">13:00</div>
-          <div class="field">15:00</div>
-          <button class="icon-btn remove-row" type="button">−</button>
-        </div>
-      </div>
-      <button class="add-time" id="addTime" type="button">+ 시간 추가</button>
-      <div class="panel-note">입력한 시간을 고려해서 다시 찾을게요.</div>
-    </div>
   </section>
 
   <div class="action-area">
-    <button class="primary" id="submitButton" type="button">선택 마치기</button>
-    <div class="note">후보 시간 외의 일정은 안전하게 보호되며, 누가 어떤 선택을 했는지는 주최자도 알 수 없어요.</div>
+
+    <button
+      class="primary"
+      id="submitButton"
+      type="button"
+    >
+      선택 마치기
+    </button>
+
+    <div class="note" id="actionNote">
+      후보 시간 외의 일정은 안전하게 보호되며, 누가 어떤 선택을 했는지는 주최자도 알 수 없어요.
+    </div>
+
   </div>
+
 </main>
 
 <script>
-const candidates=[...document.querySelectorAll(".candidate")];
-const panel=document.getElementById("impossiblePanel");
+const candidates = [
+  ...document.querySelectorAll(".candidate")
+];
 
-function updateImpossiblePanel(){
-  const allImpossible=candidates.every(card=>
-    card.querySelector(".choice.impossible").classList.contains("selected")
-  );
-  panel.classList.toggle("disabled",!allImpossible);
+const submitButton =
+  document.getElementById("submitButton");
+
+const actionNote =
+  document.getElementById("actionNote");
+
+function areAllCandidatesImpossible(){
+  return candidates.every((candidate) => {
+    const impossibleButton =
+      candidate.querySelector(".choice.impossible");
+
+    return impossibleButton.classList.contains(
+      "selected"
+    );
+  });
 }
 
-candidates.forEach(candidate=>{
-  const buttons=[...candidate.querySelectorAll(".choice")];
-  buttons.forEach(button=>{
-    button.addEventListener("click",()=>{
-      buttons.forEach(item=>item.classList.remove("selected"));
+function updateActionArea(){
+  const allImpossible =
+    areAllCandidatesImpossible();
+
+  if(allImpossible){
+    submitButton.textContent =
+      "후보 다시 선정하기";
+
+    actionNote.textContent =
+      "가능한 일정을 다시 찾아볼게요. 주최자에게 먼저 알림을 보내요.";
+
+    return;
+  }
+
+  submitButton.textContent =
+    "선택 마치기";
+
+  actionNote.textContent =
+    "후보 시간 외의 일정은 안전하게 보호되며, 누가 어떤 선택을 했는지는 주최자도 알 수 없어요.";
+}
+
+candidates.forEach((candidate) => {
+  const buttons = [
+    ...candidate.querySelectorAll(".choice")
+  ];
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((item) => {
+        item.classList.remove("selected");
+      });
+
       button.classList.add("selected");
-      updateImpossiblePanel();
+
+      updateActionArea();
     });
   });
 });
 
-updateImpossiblePanel();
-
-document.getElementById("addTime").addEventListener("click",()=>{
-  const row=document.createElement("div");
-  row.className="time-row";
-  row.innerHTML=`
-    <div class="field">날짜 선택</div>
-    <div class="field">시작 시간</div>
-    <div class="field">종료 시간</div>
-    <button class="icon-btn remove-row" type="button">−</button>`;
-  document.getElementById("timeRows").appendChild(row);
-});
-
-document.getElementById("timeRows").addEventListener("click",e=>{
-  if(e.target.classList.contains("remove-row")){
-    e.target.closest(".time-row").remove();
+submitButton.addEventListener("click", () => {
+  if(areAllCandidatesImpossible()){
+    return;
   }
+
+  location.href = "scene4.html";
 });
 
-document.getElementById("submitButton").addEventListener("click",()=>{location.href="scene4.html";});
+updateActionArea();
 </script>
+
 </body>
 </html>
